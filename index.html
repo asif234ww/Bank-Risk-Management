@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Risk Management</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.8' stroke='%233b82f6'><path stroke-linecap='round' stroke-linejoin='round' d='M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z'/></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#0b0f19] text-slate-200 min-h-screen selection:bg-blue-500/30 selection:text-blue-200 antialiased">
+
+    <div class="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+        
+        <header class="flex flex-col md:flex-row md:items-center md:justify-between pb-6 mb-10 border-b border-slate-800/80 gap-4">
+            <div class="flex items-center gap-4">
+                <div class="p-2.5 bg-gradient-to-br from-blue-500/20 to-emerald-500/10 border border-blue-500/30 rounded-xl text-blue-400 shadow-lg shadow-blue-500/5">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-7 h-7">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                    </svg>
+                </div>
+                
+                <div>
+                    <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-blue-500 mb-1">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        Live Credit Risk Management Suite
+                    </div>
+                    <h1 class="text-2xl font-bold text-white tracking-tight">
+                        Bank Risk Management Dashboard
+                    </h1>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3 text-xs text-slate-400 bg-slate-900/50 border border-slate-800/80 px-4 py-2 rounded-lg">
+                <span class="font-mono text-slate-500">Workspace: Front-Office</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="text-slate-300 font-medium">Operational</span>
+            </div>
+        </header>
+
+        <div class="space-y-10">
+            <section class="bg-slate-900/20 border border-slate-800/80 rounded-xl overflow-hidden shadow-md">
+                <div class="border-b border-slate-800/80 bg-slate-900/40 px-6 py-4 flex justify-between items-center">
+                    <h3 class="text-sm font-semibold text-white tracking-wide">⚡ Daily Desk Tool: Real-Time Loan Underwriter</h3>
+                    <span class="text-[11px] text-slate-400 font-medium bg-slate-800 px-2.5 py-1 rounded border border-slate-700">Predictive Application Assessment</span>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-slate-800/80">
+                    <form id="underwriteForm" onsubmit="underwriteLoan(event)" class="lg:col-span-7 p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Borrower Age</label>
+                            <input type="number" id="app-age" required min="18" max="100" value="35" class="w-full bg-slate-950/60 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Annual Income ($)</label>
+                            <input type="number" id="app-income" required min="1000" value="65000" class="w-full bg-slate-950/60 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Requested Loan Amount ($)</label>
+                            <input type="number" id="app-loan" required min="1000" value="15000" class="w-full bg-slate-950/60 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Years of Work Experience</label>
+                            <input type="number" id="app-exp" required min="0" max="60" value="8" class="w-full bg-slate-950/60 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div class="sm:col-span-2 pt-4">
+                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider py-3 px-4 rounded-lg transition duration-150 cursor-pointer shadow-sm">
+                                Run Risk Assessment Decisions
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="lg:col-span-5 p-6 sm:p-8 bg-slate-900/30 flex flex-col justify-between min-h-[250px]">
+                        <div>
+                            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-6">Automated Engine Credit Verdict</h4>
+                            <div id="decision-box" class="bg-slate-950/40 border border-slate-800/80 rounded-xl p-5 text-center flex flex-col justify-center items-center min-h-[120px]">
+                                <p class="text-slate-500 text-xs font-medium">Awaiting input criteria values...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = "http://127.0.0.1:8000";
+
+        async function underwriteLoan(event) {
+            event.preventDefault();
+            const age = parseInt(document.getElementById('app-age').value);
+            const income = parseFloat(document.getElementById('app-income').value);
+            const loan = parseFloat(document.getElementById('app-loan').value);
+            const exp = parseInt(document.getElementById('app-exp').value);
+            const lti = loan / income;
+
+            const payload = { Age: age, Income: income, LoanAmount: loan, YearsExperience: exp, LoanToIncome: lti };
+            const decisionBox = document.getElementById('decision-box');
+
+            decisionBox.innerHTML = `<p class="text-slate-400 text-xs animate-pulse">Running baseline algorithmic verification checks...</p>`;
+
+            try {
+                const response = await fetch(`${API_BASE}/loan/assess`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if(!response.ok) {
+                    throw new Error("API server responded with status error");
+                }
+                
+                const result = await response.json();
+                
+                if (result.status === "processed") {
+                    let colorClass = "text-emerald-400 bg-emerald-500/10 border-emerald-500/20";
+                    if(result.predicted_risk_level === "Medium Risk") colorClass = "text-amber-400 bg-amber-500/10 border-amber-500/20";
+                    if(result.predicted_risk_level === "High Risk") colorClass = "text-red-400 bg-red-500/10 border-red-500/20";
+
+                    let insightsHtml = "";
+                    if (result.risk_driver_insights) {
+                        insightsHtml = `<div class="mt-4 pt-3 border-t border-slate-800 text-left text-[11px]">
+                            <p class="text-slate-400 font-semibold mb-2 uppercase tracking-wider">Engine Risk Driver Weights:</p>`;
+                        for (const [feature, weight] of Object.entries(result.risk_driver_insights)) {
+                            insightsHtml += `
+                                <div class="flex justify-between text-slate-300 font-mono my-1">
+                                    <span>${feature}:</span>
+                                    <span class="font-bold text-blue-400">${weight}%</span>
+                                </div>`;
+                        }
+                        insightsHtml += `</div>`;
+                    }
+
+                    decisionBox.innerHTML = `
+                        <div class="w-full border rounded-xl p-4 text-center ${colorClass}">
+                            <p class="text-[10px] uppercase font-bold tracking-widest mb-1">Risk Rating</p>
+                            <h5 class="text-xl font-black mb-1">${result.predicted_risk_level}</h5>
+                            <p class="text-xs opacity-90 font-medium">Action: <strong>${result.underwriting_action}</strong></p>
+                            <p class="text-[10px] mt-1 opacity-50 font-mono">Computed LTI Ratio: ${lti.toFixed(2)}</p>
+                            ${insightsHtml}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error("Error during loan assessment:", error);
+                const mockRisk = lti > 0.4 ? "High Risk" : lti > 0.25 ? "Medium Risk" : "Low Risk";
+                const action = mockRisk === "Low Risk" ? "Approve" : mockRisk === "Medium Risk" ? "Review Required" : "Reject Recommendation";
+                let colorClass = mockRisk === "Low Risk" ? "text-emerald-400 bg-emerald-500/10 border-emerald-500/20" : mockRisk === "Medium Risk" ? "text-amber-400 bg-amber-500/10 border-amber-500/20" : "text-red-400 bg-red-500/10 border-red-500/20";
+                
+                decisionBox.innerHTML = `
+                    <div class="w-full border rounded-xl p-4 text-center ${colorClass}">
+                        <p class="text-[10px] uppercase font-bold tracking-widest mb-1">Local Failover Logic Verdict (Offline)</p>
+                        <h5 class="text-xl font-black mb-2">${mockRisk}</h5>
+                        <p class="text-xs opacity-90 font-medium">Action: <strong>${action}</strong></p>        
+                        <p class="text-[10px] mt-2 opacity-50 font-mono">Computed LTI Ratio: ${lti.toFixed(2)}</p>
+                    </div>
+                `;  
+            }   
+        }
+    </script>
+</body>
+</html>
